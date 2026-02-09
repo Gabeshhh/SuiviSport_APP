@@ -5,17 +5,13 @@ import { router } from 'expo-router';
 export default function Index() {
   // États des stats 
   const [entrainements, setEntrainement] = useState(0);
-  const [km, setKm] = useState(0);
-  const [minutes, setMinutes] = useState(0);
+  const [garde, setGarde] = useState(0);
+  const [sommeil, setSommeil] = useState(0);
 
 
   const handlePress = () => {
     alert("Création d'une nouvelle séance");
   };
-
-  const hadleWork = () => {
-    // blabla setEntrainement etc.. via la nouvelle page
-  }
 
   const handleNouvelleSeance = () => {
       router.push('/nouvelle_seance');
@@ -25,7 +21,7 @@ export default function Index() {
     <ScrollView contentContainerStyle={styles.scrollContent}>
       <View style={styles.container}>
       <View style={styles.top}>
-        <Text style={styles.title}>Workout Dashboard 🏋️</Text>
+        <Text style={styles.title}>Dashboard Life</Text>
         <Text style = {styles.name}>Bienvenue, Gabriel</Text>
       </View>
       
@@ -37,23 +33,31 @@ export default function Index() {
         </View>
 
         <View style={styles.statCard}>
-          <Text style={styles.statNumber}>{km}</Text>
-          <Text style={styles.statLabel}>km</Text>
+          <Text style={styles.statNumber}>{garde}</Text>
+          <Text style={styles.statLabel}>garde</Text>
         </View>
 
         <View style={styles.statCard}>
-          <Text style={styles.statNumber}>{minutes}</Text>
-          <Text style={styles.statLabel}>minutes</Text>
+          <Text style={styles.statNumber}>{sommeil}</Text>
+          <Text style={styles.statLabel}>sommeil</Text>
         </View>
       </View>
   
       {/* Bouton ajouter une séance */}
-      <TouchableOpacity style={styles.addButtonSeance} onPress={handleNouvelleSeance}>
-        <Text style={styles.addButtonTextSeance}>➕ Nouvelle séance</Text>
+      <TouchableOpacity style={styles.addButton1} onPress={handleNouvelleSeance}>
+        <Text style={styles.addButtonText1}>➕ Nouvelle séance</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.addButtonStats} onPress={handlePress}>
-        <Text style={styles.addButtonTextStats}>📊 Voir statistiques</Text>
+      <TouchableOpacity style={styles.addButton2} onPress={handlePress}>
+        <Text style={styles.addButtonText2}>📊 Ajouter une garde</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.addButton1} onPress={handlePress}>
+        <Text style={styles.addButtonText1}>😴 Ajouter sommeil</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.addButton2} onPress={handlePress}>
+        <Text style={styles.addButtonText2}>📊 Voir statistiques</Text>
       </TouchableOpacity>
     </View>
     </ScrollView>
@@ -119,7 +123,7 @@ const styles = StyleSheet.create({
   },
   
   // Style bouton Séance
-  addButtonSeance: {
+  addButton1: {
     backgroundColor: '#4f46e5',
     padding: 17,
     borderRadius: 15,
@@ -130,16 +134,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 10.84,
     paddingLeft: 80,
-    paddingRight: 80
+    paddingRight: 80,
+    minWidth: 330,
   },
-  addButtonTextSeance: {
+  addButtonText1: {
     color: "#fff",
     fontSize: 16,
     fontWeight: '700'
   },  
 
   // Style bouton Statistiques
-  addButtonStats: {
+  addButton2: {
     backgroundColor: '#fff',
     padding: 17,
     borderRadius: 15,
@@ -150,9 +155,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 10.84,
     paddingLeft: 80,
-    paddingRight: 80
+    paddingRight: 80,
+    minWidth: 330,
   }, 
-  addButtonTextStats: {
+  addButtonText2: {
     color: "#4f46e5",
     fontSize: 16,
     fontWeight: 700,

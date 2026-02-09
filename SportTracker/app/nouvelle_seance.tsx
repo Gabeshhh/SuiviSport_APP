@@ -1,6 +1,7 @@
 import { use, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { router } from 'expo-router';
+import { saveSeance } from './utils/storage';
 
 // Type pour un exercice
 type Exercice = {
@@ -43,11 +44,23 @@ export default function NouvelleSeance() {
   };
 
   // Sauvegarde de la nouvelle séance 
-  const sauvegarder = () => {
-    console.log('Type:', typeSeance);
-    console.log('Exercices:', exercices);
-    alert('Séance enregistrée ! 💪');
-    router.back();
+  const sauvegarder = async () => {
+    const nouvelleSeance = {
+      id: Date.now().toString(),
+      typeSeance,
+      bpm,
+      date: new Date().toISOString(),
+      exercices,
+    };
+
+    const succes = await saveSeance(nouvelleSeance);
+
+    if (succes) {
+      alert("Séance enregistré.");
+      router.back();
+    } else {
+      alert("Erreur d'enregistrement.");
+    }
   };
 
 
