@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, Button, StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
+import { router } from 'expo-router';
 
 export default function Index() {
   // États des stats 
@@ -13,11 +14,16 @@ export default function Index() {
   };
 
   const hadleWork = () => {
-    set
+    // blabla setEntrainement etc.. via la nouvelle page
+  }
+
+  const handleNouvelleSeance = () => {
+      router.push('/nouvelle_seance');
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.scrollContent}>
+      <View style={styles.container}>
       <View style={styles.top}>
         <Text style={styles.title}>Workout Dashboard 🏋️</Text>
         <Text style = {styles.name}>Bienvenue, Gabriel</Text>
@@ -26,23 +32,23 @@ export default function Index() {
     
       <View style={styles.statsContainer}>
         <View style={styles.statCard}>
-          <Text style={styles.statNumber}>{setKm}</Text>
+          <Text style={styles.statNumber}>{entrainements}</Text>
           <Text style={styles.statLabel}>entraînements</Text>
         </View>
 
         <View style={styles.statCard}>
-          <Text style={styles.statNumber}>{setKm}</Text>
+          <Text style={styles.statNumber}>{km}</Text>
           <Text style={styles.statLabel}>km</Text>
         </View>
 
         <View style={styles.statCard}>
-          <Text style={styles.statNumber}>{setMinutes}</Text>
+          <Text style={styles.statNumber}>{minutes}</Text>
           <Text style={styles.statLabel}>minutes</Text>
         </View>
       </View>
   
       {/* Bouton ajouter une séance */}
-      <TouchableOpacity style={styles.addButtonSeance} onPress={handlePress}>
+      <TouchableOpacity style={styles.addButtonSeance} onPress={handleNouvelleSeance}>
         <Text style={styles.addButtonTextSeance}>➕ Nouvelle séance</Text>
       </TouchableOpacity>
 
@@ -50,10 +56,17 @@ export default function Index() {
         <Text style={styles.addButtonTextStats}>📊 Voir statistiques</Text>
       </TouchableOpacity>
     </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  // Scroll View
+  scrollContent : {
+    flexGrow: 1,
+  },
+
+  // Accueil simple
   top: {
     backgroundColor: "#fff",
     padding: 30,
@@ -78,6 +91,7 @@ const styles = StyleSheet.create({
     fontWeight: 'light',
     color: "#BFB9B8",
     marginBottom: 30,
+    marginTop: 4
   },
 
   // Style de la roue 

@@ -6,14 +6,19 @@ export default function RootLayout() {
       <Stack.Screen 
         name="index" 
         options={{
-          title: 'Accueil', 
-          headerStyle: {
-            backgroundColor: '#4f46e5',
-          },
+          title: 'Accueil',
+          headerStyle: { backgroundColor: '#4f46e5' },
           headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
+          headerTitleStyle: { fontWeight: 'bold' },
+        }} 
+      />
+      <Stack.Screen 
+        name="nouvelle_seance" 
+        options={{
+          title: 'Nouvelle Séance',
+          headerStyle: { backgroundColor: '#4f46e5' },
+          headerTintColor: '#fff',
+          headerTitleStyle: { fontWeight: 'bold' },
         }} 
       />
     </Stack>
