@@ -21,6 +21,16 @@ export default function RootLayout() {
           headerTitleStyle: { fontWeight: 'bold' },
         }} 
       />
+      <Stack.Screen 
+        name='nouvelle_garde'
+        options={{
+          title: "Nouvelle garde",
+          
+          headerStyle: { backgroundColor: '#ef4444' },
+          headerTintColor: '#fff',
+          headerTitleStyle: { fontWeight: 'bold' },
+        }}
+      />
     </Stack>
   );
 }
