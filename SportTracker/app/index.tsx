@@ -13,8 +13,15 @@ export default function Index() {
     alert("Création d'une nouvelle séance");
   };
 
+  // Fonction pour la page d'ajout de séance
   const handleNouvelleSeance = () => {
       router.push('/nouvelle_seance');
+  }
+
+
+  // Fonction pour la page d'ajout d'une garde
+  const handleNouvelleGarde = () => {
+    router.push('/nouvelle_garde');
   }
 
   return (
@@ -48,8 +55,8 @@ export default function Index() {
         <Text style={styles.addButtonText1}>➕ Nouvelle séance</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.addButton2} onPress={handlePress}>
-        <Text style={styles.addButtonText2}>📊 Ajouter une garde</Text>
+      <TouchableOpacity style={styles.addButton2} onPress={handleNouvelleGarde}>
+        <Text style={styles.addButtonText2}>🧑‍🚒 Ajouter une garde</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.addButton1} onPress={handlePress}>
